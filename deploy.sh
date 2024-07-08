@@ -17,13 +17,13 @@ clone_or_update_repo() {
         # Repository already exists, perform a pull
         cd "$local_dir"
         git pull
-        npm install
-        npm run build
-        npm run migrate
-        pm2 stop all
-        pm2 delete all
-        pm2 start dist/ --name booking-app-api
-        pm2 restart 0
+        # npm install
+        # npm run build
+        # npm run migrate
+        # pm2 stop all
+        # pm2 delete all
+        # pm2 start dist/ --name booking-app-api
+        # pm2 restart 0
     else
         # Repository doesn't exist, clone it
         git clone "$repo_url" "$local_dir"

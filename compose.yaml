@@ -1,16 +1,15 @@
-version: '3.1'
+version: "3.1"
 
 services:
   db:
     image: mariadb:10.6
     restart: always
     ports:
-      - 3306:3306
+      - 3307:3306
     environment:
       MYSQL_ROOT_HOST: "%"
       MYSQL_ROOT_PASSWORD: Dalil2020
       MYSQL_DATABASE: test
-
   phpmyadmin:
     image: phpmyadmin
     restart: always
@@ -28,13 +27,21 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - phpmyadmin
-
-#  booking-app:
-#    build:
-#      context: ./booking-app-api
-#      dockerfile: Dockerfile
-#    ports:
-#      - 3000:3000
-#    env_file: "./env/.env"
-#    volumes:
-#      - ./env/google.env.json:/tmp/google.env.json:ro
+  booking-app:
+    build:
+      context: ./booking-app-api
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    env_file: "./env/.env"
+    volumes:
+      - ./env/google.env.json:/tmp/google.env.json:ro
+  # booking-app1:
+  #   build:
+  #     context: ./booking-app-api
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - 3001:3000
+  #   env_file: "./env/.env"
+  #   volumes:
+  #     - ./env/google.env.json:/tmp/google.env.json:ro
