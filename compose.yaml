@@ -29,7 +29,7 @@ services:
       - phpmyadmin
   booking-app:
     build:
-      context: ./booking-app-api
+      context: ./HajzBackend
       dockerfile: Dockerfile
     command: ["./entrypoint.sh"]
     ports:
